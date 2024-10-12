@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Effect</title>
+    <style>
+        /* 设置全屏的雨容器 */
+        .rain-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url('./wallhaven-kxd6y7.png') no-repeat center center; /* 背景颜色可以根据需要调整 */
+            background-size: cover;
+            overflow: hidden;
+        }
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* 透明背景 */
+            display: flex;
+            justify-content: center; /* 右对齐 */
+            z-index: 10; /* 确保在背景之上 */
+            font-family:"Qwitcher Grypen", cursive; 
+            font-size: 40px;
+            letter-spacing: 2px;
+            
+        }
+
+        /* 选项样式 */
+        .navbar a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: black; /* 文字颜色 */
+            font-weight: bold;
+            transition: color 0.3s; /* 鼠标悬停变色的过渡效果 */
+        }
+
+        /* 鼠标悬停效果 */
+        .navbar a:hover {
+            color: skyblue; /* 鼠标悬停时的颜色 */
+        }
+
+        /* 雨滴的基本样式 */
+        .rain-drop {
+            position: absolute;
+            bottom: 100%;
+            width: 2px;
+            height: 100px;
+            background-color:rgba(255, 255, 255, 0.5); /* 半透明白色 */
+            animation: fall 1s linear infinite;
+        }
+
+        /* 雨滴下落的动画 */
+        @keyframes fall {
+            to {
+                transform: translateY(1100vh); /* 雨滴下落超过视口 */
+            }
+        }
+        
+
+        #a{
+            margin-right: 250px;
+        }
+        #b{
+            margin-right: 250px;
+        }
+        #c{
+            margin-right: 200px;
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="rain-container">
+        <div class="navbar">
+            <a id="a"href="#">Option</a>
+            <a id="b"href="#">Setting</a>
+            <a id="c"href="#">Download</a>
+            <a id="d"href="./content.html">Information</a>
+        </div>
+        
+</div>
+
+    <script>
+        const rainContainer = document.querySelector('.rain-container');
+
+        function createRainDrop() {
+            const drop = document.createElement('div');
+            drop.classList.add('rain-drop');
+
+            // 随机设置雨滴的横向位置
+            drop.style.left = Math.random() * 100 + 'vw';
+            // 随机设置雨滴的动画时长，给人以雨滴速度不一的感觉
+            drop.style.animationDuration = Math.random() * 0.5 + 0.75 + 's';
+            // 随机设置雨滴的长度
+            drop.style.height = Math.random() * 50 + 20 + 'px';
+
+            rainContainer.appendChild(drop);
+
+            // 一段时间后自动移除雨滴，以防内存泄漏
+            setTimeout(() => {
+                drop.remove();
+            }, 1500); // 动画时间结束后移除
+        }
+
+        // 每100ms生成一个雨滴
+        setInterval(createRainDrop, 100);
+    </script>
+
+</body>
+</html>

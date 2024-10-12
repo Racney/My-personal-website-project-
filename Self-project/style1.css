@@ -1,0 +1,65 @@
+
+#image1{
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    display: block;
+}
+
+h1 {
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+
+    
+  }
+  
+
+  
+  .div1{
+    position: relative;
+    display: inline-block;
+  }
+
+  .div2{
+    position: absolute;
+    position: absolute;
+    top: 50%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -50%); /* 使文字完全居中 */
+    color: white; /* 文字颜色 */
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 让文字更清晰 */
+    padding: 10px 20px; /* 给文字一些内边距 */
+    
+  }
+
+  /* 设置全屏的雨容器 */
+.rain-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111; /* 背景颜色可以根据需要调整 */
+    overflow: hidden;
+}
+
+/* 雨滴的基本样式 */
+.rain-drop {
+    position: absolute;
+    bottom: 100%;
+    width: 2px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
+    animation: fall 1s linear infinite;
+}
+
+/* 雨滴下落的动画 */
+@keyframes fall {
+    to {
+        transform: translateY(110vh); /* 雨滴下落超过视口 */
+    }
+}
